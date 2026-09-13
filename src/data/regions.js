@@ -33,8 +33,18 @@ export const PROVINCE_TO_REGION = {
   "Bolzano": "Trentino-Alto Adige", "Trento": "Trentino-Alto Adige",
   "Udine": "Friuli-Venezia Giulia", "Gorizia": "Friuli-Venezia Giulia", "Pordenone": "Friuli-Venezia Giulia", "Trieste": "Friuli-Venezia Giulia",
   "Perugia": "Umbria", "Terni": "Umbria",
-  "Valle d'Aosta": "Valle d'Aosta", "Aosta": "Valle d'Aosta",
+  "Aosta": "Valle d'Aosta",
   "Imperia": "Liguria", "Savona": "Liguria", "Genova": "Liguria", "La Spezia": "Liguria",
+  "Sud Sardegna": "Sardegna",
+};
+
+// Mappa per normalizzare i nomi provincia dal dataset (chiave dataset -> nome canonico)
+// I dataset TERNA usano varianti diverse da quelle del codice ISTAT.
+export const PROVINCE_NORMALIZER = {
+  "Bolzano/Bozen":    "Bolzano",
+  "Pesaro E Urbino":  "Pesaro e Urbino",
+  "Reggio Di Calabria": "Reggio Calabria",
+  "Reggio Nell'Emilia": "Reggio Emilia",
 };
 
 // Mappa per normalizzare i nomi regione dal dataset (chiave dataset -> nome canonico)
@@ -71,6 +81,14 @@ export const REGION_LIST = Object.keys(REGIONS).sort();
 
 export function normalizeRegion(name) {
   return REGION_NORMALIZER[name] ?? name;
+}
+
+export function normalizeProvince(name) {
+  return PROVINCE_NORMALIZER[name] ?? name;
+}
+
+export function provinceToRegion(province) {
+  return PROVINCE_TO_REGION[normalizeProvince(province)] ?? null;
 }
 
 export function getRegionStats({ renewableMW = 0, fossilMW = 0 } = {}) {

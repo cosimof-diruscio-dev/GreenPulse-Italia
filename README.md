@@ -1,3 +1,5 @@
+> 🇮🇹 **Italiano** · 🇬🇧 [**English**](./README.en.md)
+
 <div align="center">
 
 # 🌱 **GreenPulse Italia**
@@ -15,7 +17,7 @@
 ![Recharts](https://img.shields.io/badge/Recharts-3-8884D8?style=flat-square)
 ![Vitest](https://img.shields.io/badge/tested-Vitest-6E9F18?logo=vitest&logoColor=white&style=flat-square)
 ![Deploy](https://img.shields.io/badge/Deploy-Vercel-000000?logo=vercel&logoColor=white&style=flat-square)
-![Licenza](https://img.shields.io/badge/Licenza-MIT-22c55e?style=flat-square)
+![Licenza](https://img.shields.io/badge/Licenza-All_rights_reserved-9ca3af?style=flat-square)
 
 </div>
 
@@ -185,4 +187,4 @@ src/
 
 ## 📜 Licenza
 
-🌍💚 Copyright (c) 2026 Di Ruscio Cosimo Francesco. All rights reserved. 🌍💚
+🌍💚 Copyright (c) 2026 Di Ruscio Cosimo Francesco. All rights reserved. Vedi [LICENSE](./LICENSE). 🌍💚

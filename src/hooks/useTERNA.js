@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import * as terna from "../services/ternaData.js";
-import { PROVINCE_TO_REGION } from "../data/regions.js";
+import { normalizeRegion, normalizeProvince, provinceToRegion } from "../data/regions.js";
 
 const RENEWABLE_SOURCES = new Set([
   "Idrico", "Fotovoltaico", "Eolico", "Eolico Offshore", "Geotermico", "Bioenergie",
@@ -52,18 +52,20 @@ export default function useTERNA(region) {
 
         const sortByValue = (a, b) => (b.value ?? 0) - (a.value ?? 0);
 
+        const matchesRegion = (name) => normalizeRegion(name) === region;
+
         const production = productionAll
-          .filter(d => d.region === region)
+          .filter(d => matchesRegion(d.region))
           .map(d => ({ source: d.source, value: d.value ?? 0, type: SOURCE_META[d.source]?.type ?? "fossil", ...(SOURCE_META[d.source] ?? { icon: "⚡", short: d.source }) }))
           .sort(sortByValue);
 
         const capacity = capacityAll
-          .filter(d => d.region === region)
+          .filter(d => matchesRegion(d.region))
           .map(d => ({ source: d.source, value: d.value ?? 0, type: "renewable", ...(SOURCE_META[d.source] ?? { icon: "⚡", short: d.source }) }))
           .sort(sortByValue);
 
         const plants = plantsAll
-          .filter(d => d.region === region)
+          .filter(d => matchesRegion(d.region))
           .map(d => ({
             type: SOURCE_META[d.type]?.type ?? "fossil",
             subtype: d.type,
@@ -72,23 +74,23 @@ export default function useTERNA(region) {
           .sort((a, b) => b.capacity - a.capacity);
 
         const fuels = fuelsAll
-          .filter(d => d.region === region)
+          .filter(d => matchesRegion(d.region))
           .map(d => ({ fuel: d.fuel, value: d.value ?? 0 }))
           .sort(sortByValue);
 
         const emissions = emissionsAll
-          .filter(d => d.region === region)
+          .filter(d => matchesRegion(d.region))
           .map(d => ({ fuel: d.fuel, value: d.value ?? 0 }))
           .sort(sortByValue);
 
         const demand = demandAll
-          .filter(d => d.region === region)
+          .filter(d => matchesRegion(d.region))
           .map(d => ({ tipologia: d.tipologia, value: d.value ?? 0, yoYValue: d.yoYValue }))
           .sort(sortByValue);
 
         const provincialPlants = provincialAll
-          .filter(d => PROVINCE_TO_REGION[d.province] === region)
-          .map(d => ({ province: d.province, type: SOURCE_META[d.type]?.type ?? "fossil", subtype: d.type, capacity: d.value ?? 0 }))
+          .filter(d => matchesRegion(provinceToRegion(d.province)))
+          .map(d => ({ province: normalizeProvince(d.province), type: SOURCE_META[d.type]?.type ?? "fossil", subtype: d.type, capacity: d.value ?? 0 }))
           .sort((a, b) => b.capacity - a.capacity);
 
         const renewableMW = capacity.reduce((s, c) => s + c.value, 0);
@@ -111,7 +113,7 @@ export default function useTERNA(region) {
         }
         const byYear = Object.values(byYearMap).sort((a, b) => a.year - b.year);
 
-        const regionYoY = regionalYoY.find(d => d.region === region);
+        const regionYoY = regionalYoY.find(d => matchesRegion(d.region));
 
         const national = { totalGWh, renewableGWh, renewablePct: totalGWh > 0 ? (renewableGWh / totalGWh) * 100 : 0, bySource, byYear };
 
