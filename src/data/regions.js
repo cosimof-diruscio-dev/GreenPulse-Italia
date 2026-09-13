@@ -8,9 +8,9 @@ export const PROVINCE_TO_REGION = {
   "Verbano-Cusio-Ossola": "Piemonte", "Vercelli": "Piemonte",
   "Belluno": "Veneto", "Padova": "Veneto", "Rovigo": "Veneto",
   "Treviso": "Veneto", "Venezia": "Veneto", "Verona": "Veneto", "Vicenza": "Veneto",
-  "Bologna": "Emilia-romagna", "Ferrara": "Emilia-romagna", "Forlì-Cesena": "Emilia-romagna",
-  "Modena": "Emilia-romagna", "Parma": "Emilia-romagna", "Piacenza": "Emilia-romagna",
-  "Ravenna": "Emilia-romagna", "Reggio Emilia": "Emilia-romagna", "Rimini": "Emilia-romagna",
+  "Bologna": "Emilia-Romagna", "Ferrara": "Emilia-Romagna", "Forlì-Cesena": "Emilia-Romagna",
+  "Modena": "Emilia-Romagna", "Parma": "Emilia-Romagna", "Piacenza": "Emilia-Romagna",
+  "Ravenna": "Emilia-Romagna", "Reggio Emilia": "Emilia-Romagna", "Rimini": "Emilia-Romagna",
   "Arezzo": "Toscana", "Firenze": "Toscana", "Grosseto": "Toscana",
   "Livorno": "Toscana", "Lucca": "Toscana", "Massa-Carrara": "Toscana",
   "Pisa": "Toscana", "Pistoia": "Toscana", "Prato": "Toscana", "Siena": "Toscana",
@@ -29,12 +29,18 @@ export const PROVINCE_TO_REGION = {
   "Campobasso": "Molise", "Isernia": "Molise",
   "Chieti": "Abruzzo", "L'Aquila": "Abruzzo", "Pescara": "Abruzzo", "Teramo": "Abruzzo",
   "Matera": "Basilicata", "Potenza": "Basilicata",
-  "Forlì": "Emilia-romagna", "Cesena": "Emilia-romagna",
+  "Forlì": "Emilia-Romagna", "Cesena": "Emilia-Romagna",
   "Bolzano": "Trentino-Alto Adige", "Trento": "Trentino-Alto Adige",
   "Udine": "Friuli-Venezia Giulia", "Gorizia": "Friuli-Venezia Giulia", "Pordenone": "Friuli-Venezia Giulia", "Trieste": "Friuli-Venezia Giulia",
   "Perugia": "Umbria", "Terni": "Umbria",
   "Valle d'Aosta": "Valle d'Aosta", "Aosta": "Valle d'Aosta",
   "Imperia": "Liguria", "Savona": "Liguria", "Genova": "Liguria", "La Spezia": "Liguria",
+};
+
+// Mappa per normalizzare i nomi regione dal dataset (chiave dataset -> nome canonico)
+export const REGION_NORMALIZER = {
+  "Valle D'Aosta": "Valle d'Aosta",
+  "Valle d'Aosta": "Valle d'Aosta",
 };
 
 export const REGIONS = {
@@ -59,6 +65,13 @@ export const REGIONS = {
   "Trentino-Alto Adige":   { capital:"Trento",  lat:46.0669, lng:11.1210 },
   "Valle d'Aosta":    { capital:"Aosta",        lat:45.7369, lng: 7.3202 },
 };
+
+// Elenco ordinato delle 20 regioni per il selettore UI
+export const REGION_LIST = Object.keys(REGIONS).sort();
+
+export function normalizeRegion(name) {
+  return REGION_NORMALIZER[name] ?? name;
+}
 
 export function getRegionStats({ renewableMW = 0, fossilMW = 0 } = {}) {
   const totalMW = renewableMW + fossilMW;

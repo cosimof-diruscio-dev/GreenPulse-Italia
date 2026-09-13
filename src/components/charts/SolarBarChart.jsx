@@ -1,16 +1,7 @@
 import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, Cell, ReferenceLine } from "recharts";
 import { useAppStore } from "../../store/useAppStore";
 
-function ChartSkeleton() {
-  return (
-    <div className="h-44 flex items-end gap-1 px-2 animate-pulse">
-      {[15,0,0,25,55,88,100,78,48,18,4,0].map((h,i) => (
-        <div key={i} className="flex-1 rounded-t bg-gray-200 dark:bg-gray-700"
-          style={{ height: `${Math.max(3, h)}%` }} />
-      ))}
-    </div>
-  );
-}
+
 
 function CT({ active, payload, label, dk }) {
   if (!active || !payload?.length) return null;
@@ -58,7 +49,7 @@ export default function SolarBarChart({ hourlyData, loading }) {
 
 function ChartSkeleton() {
   return (
-    <div className="h-[200px] flex items-end gap-1 px-2 animate-pulse">
+    <div className="h-50 flex items-end gap-1 px-2 animate-pulse">
       {[30, 0, 0, 20, 60, 90, 100, 80, 50, 20, 5, 0].map((h, i) => (
         <div
           key={i}
