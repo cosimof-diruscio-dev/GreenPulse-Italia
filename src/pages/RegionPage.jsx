@@ -69,6 +69,11 @@ export default function RegionPage() {
     if (refCity) setRegion(regionId);
   }, [regionId, refCity, setRegion]);
 
+  const { data: energyData, loading, error } = useEnergyData(
+    refCity?.lat ?? null,
+    refCity?.lng ?? null
+  );
+
   if (!refCity) {
     return (
       <div className={`flex flex-col items-center justify-center min-h-[60vh] gap-4
@@ -82,11 +87,6 @@ export default function RegionPage() {
       </div>
     );
   }
-
-  const { data: energyData, loading, error } = useEnergyData(
-    refCity.lat,
-    refCity.lng
-  );
 
   return (
     <div className="max-w-5xl mx-auto px-4 sm:px-6 py-6 space-y-6 animate-fade-in">

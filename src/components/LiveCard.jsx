@@ -14,7 +14,7 @@ export default function LiveCard({ icon, title, loading, value, unit, pct, pctTe
     <div className={`rounded-2xl p-4 ${loading ? "border-gray-100 dark:border-gray-800" : ""}`}>
       <div className="flex items-center gap-2 mb-3">
         {icon}
-        <span className={`text-xs font-semibold text-gray-300`}>{title}</span>
+        <span className={`text-xs font-semibold text-gray-400-300`}>{title}</span>
       </div>
       {loading ? (
         <>

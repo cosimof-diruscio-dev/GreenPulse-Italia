@@ -392,21 +392,3 @@ export default function Dashboard() {
   );
 }
 
-// ProgressBar: barra di avanzamento colorata
-function ProgressBar({ pct, color }) {
-  const colorMap = {
-    amber: "bg-amber-400",
-    blue: "bg-blue-400",
-    emerald: "bg-emerald-500",
-    red: "bg-red-400",
-  };
-
-  return (
-    <div className="w-full bg-gray-100 dark:bg-gray-700 rounded-full h-1.5 my-2">
-      <div
-        className={`h-1.5 rounded-full transition-all duration-500 ${colorMap[color] ?? "bg-gray-400"}`}
-        style={{ width: `${Math.max(2, pct)}%` }}
-      />
-    </div>
-  );
-}

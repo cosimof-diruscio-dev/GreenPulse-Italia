@@ -295,10 +295,3 @@ export const IconGlobe = ({ size = 15, className = "" }) => (
   </svg>
 );
 
-export const typeColor = (type, dk) =>
-  type === "renewable"
-    ? dk ? "text-emerald-400" : "text-emerald-600"
-    : dk ? "text-orange-400" : "text-orange-600";
-
-export const barColor = (type) =>
-  type === "renewable" ? "bg-emerald-500" : "bg-orange-400";

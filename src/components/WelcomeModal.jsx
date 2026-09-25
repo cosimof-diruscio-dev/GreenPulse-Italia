@@ -7,7 +7,7 @@ const STEPS = [
     icon: <IconLeaf size={32} className="text-white" />,
     bg:   "from-emerald-500 to-green-400",
     title:"Benvenuto in GreenPulse Italia",
-    body: "Dashboard energetica con dati in tempo reale su irraggiamento solare, vento e CO₂ per 9 regioni italiane.",
+    body: "Dashboard energetica con dati in tempo reale su irraggiamento solare, vento e CO₂ per 20 regioni italiane.",
   },
   {
     icon: <IconMapPin size={32} className="text-white" />,

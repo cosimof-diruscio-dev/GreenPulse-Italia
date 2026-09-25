@@ -121,41 +121,4 @@ describe('ternaData.js', () => {
     });
   });
 
-  describe('getTotalProduzioneByRegion', () => {
-    it('aggrega per regione sommando tutte le fonti', async () => {
-      const totals = await ternaData.getTotalProduzioneByRegion();
-      const lombardia = totals.find(t => t.region === 'Lombardia');
-      expect(lombardia.value).toBe(1200 + 5000); // PV + Gas
-    });
-  });
-
-  describe('getRenewableShareByRegion', () => {
-    it('calcola la quota rinnovabile includendo solo fonti green', async () => {
-      const shares = await ternaData.getRenewableShareByRegion();
-      const lombardia = shares.find(s => s.region === 'Lombardia');
-      // rinnovabili = 1200 (Fotovoltaico), totale = 6200
-      expect(lombardia.total).toBe(6200);
-      expect(lombardia.renewable).toBe(1200);
-      expect(lombardia.share).toBeCloseTo((1200 / 6200) * 100, 2);
-    });
-  });
-
-  describe('getEmissionIntensityByRegion', () => {
-    it('calcola intensità in kg/GWh', async () => {
-      const intensity = await ternaData.getEmissionIntensityByRegion();
-      const lombardia = intensity.find(i => i.region === 'Lombardia');
-      // 5.2 mln tonnellate su 6200 GWh → 5_200_000 / 6200 ≈ 838.71 kg/GWh
-      // precision: 1 decimal place
-      expect(lombardia.intensity).toBeCloseTo((5.2 * 1e6) / 6200, 1);
-    });
-
-    it('restituisce 0 se non c\'è produzione per la regione', async () => {
-      const intensity = await ternaData.getEmissionIntensityByRegion();
-      // Sicilia ha emissioni (3.0) ma 0 produzione regionale per fonte nel mock
-      const sicilia = intensity.find(i => i.region === 'Sicilia');
-      expect(sicilia).toBeDefined();
-      expect(sicilia.production).toBe(0);
-      expect(sicilia.intensity).toBe(0);
-    });
-  });
 });

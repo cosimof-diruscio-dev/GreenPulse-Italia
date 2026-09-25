@@ -11,12 +11,12 @@ export default function NotFound() {
 
   return (
     <div className={`min-h-screen flex flex-col items-center justify-center p-6 text-center
-      ${dk ? "bg-gray-950" : "bg-gradient-to-br from-emerald-50 to-green-100"}`}>
+      ${dk ? "bg-gray-950" : "bg-linear-to-br from-emerald-50 to-green-100"}`}>
 
       <div className={`flex items-center justify-center w-24 h-24 rounded-full mb-6 shadow-2xl
         ${isUnauthorized
-          ? "bg-gradient-to-br from-red-500 to-rose-400 shadow-red-200 dark:shadow-red-900/40"
-          : "bg-gradient-to-br from-emerald-500 to-green-400 shadow-emerald-200 dark:shadow-emerald-900/40"}`}>
+          ? "bg-linear-to-br from-red-500 to-rose-400 shadow-red-200 dark:shadow-red-900/40"
+          : "bg-linear-to-br from-emerald-500 to-green-400 shadow-emerald-200 dark:shadow-emerald-900/40"}`}>
         {isUnauthorized
           ? <IconShieldOff size={44} className="text-white" />
           : <IconTreePine  size={44} className="text-white" />}
@@ -63,7 +63,7 @@ export default function NotFound() {
 
         <Link to="/"
           className="flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-bold
-            text-white bg-gradient-to-r from-emerald-600 to-green-500
+            text-white bg-linear-to-r from-emerald-600 to-green-500
             hover:from-emerald-700 hover:to-green-600 shadow-lg shadow-emerald-200
             dark:shadow-emerald-900/40 transition-all duration-200 hover:scale-105">
           <IconHome size={15} />

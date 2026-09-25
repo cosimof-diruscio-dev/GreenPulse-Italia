@@ -1,4 +1,3 @@
-import { useNavigate } from "react-router-dom";
 import { useAppStore } from "../store/useAppStore";
 import { CITIES }      from "../data/cities";
 import { IconMapPin } from "./icons";

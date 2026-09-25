@@ -30,7 +30,7 @@ export default function LoginPage() {
 
   return (
     <div className={`min-h-screen flex items-center justify-center p-4
-      ${dk ? "bg-gray-950" : "bg-gradient-to-br from-emerald-50 to-green-100"}`}>
+      ${dk ? "bg-gray-950" : "bg-linear-to-br from-emerald-50 to-green-100"}`}>
 
       <div className={`w-full max-w-md rounded-2xl shadow-2xl border p-5 sm:p-8 animate-fade-in
         ${dk
@@ -39,7 +39,7 @@ export default function LoginPage() {
 
         <div className="flex flex-col items-center mb-8">
           <div className="flex items-center justify-center w-16 h-16 rounded-2xl mb-4
-            bg-gradient-to-br from-emerald-500 to-green-400 shadow-lg shadow-emerald-200">
+            bg-linear-to-br from-emerald-500 to-green-400 shadow-lg shadow-emerald-200">
             <IconLeaf size={32} className="text-white" />
           </div>
           <h1 className="text-2xl font-extrabold text-emerald-600 dark:text-emerald-400">
@@ -150,7 +150,7 @@ export default function LoginPage() {
               font-bold text-sm text-white transition-all duration-200
               ${isLoading
                 ? "bg-gray-400 cursor-not-allowed"
-                : "bg-gradient-to-r from-emerald-600 to-green-500 hover:from-emerald-700 hover:to-green-600 shadow-lg shadow-emerald-200 dark:shadow-emerald-900/40 hover:scale-[1.01]"
+                : "bg-linear-to-r from-emerald-600 to-green-500 hover:from-emerald-700 hover:to-green-600 shadow-lg shadow-emerald-200 dark:shadow-emerald-900/40 hover:scale-[1.01]"
               }`}>
             {isLoading
               ? <><IconLoader2 size={16} className="animate-spin" />Accesso in corso...</>
