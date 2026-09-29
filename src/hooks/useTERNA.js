@@ -6,12 +6,7 @@ import {
   provinceToRegion,
 } from "../data/regions.js";
 
-// Decisione di dominio (vedi colloquio con il proprietario del progetto):
-// "Accumulo stand alone" è uno stoccaggio, non una fonte di produzione.
-// Viene comunque conteggiato come rinnovabile perché l'energia che
-// accumula proviene da impianti rinnovabili — non introduce quindi
-// energia fossile nel totale; il criterio è "origine rinnovabile
-// dell'energia", non "tecnologia di produzione".
+
 const RENEWABLE_SOURCES = new Set([
   "Idrico",
   "Fotovoltaico",
