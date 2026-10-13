@@ -116,7 +116,7 @@ export default function AboutPage() {
               ? "border-gray-700 bg-gray-800 text-gray-300 hover:bg-gray-700"
               : "border-gray-200 bg-white text-gray-600 hover:bg-gray-50"}`}>
           <IconCode size={15} />
-          github.com/greenexplorerdev
+          GitHub
         </a>
         <a href="https://www.linkedin.com/in/cosimo-francesco-di-ruscio"
           target="_blank" rel="noopener noreferrer"
