@@ -109,7 +109,7 @@ export default function AboutPage() {
       </div>
 
       <div className="flex flex-col sm:flex-row gap-3">
-        <a href="https://github.com/greenexplorerdev" target="_blank" rel="noopener noreferrer"
+        <a href="https://github.com/cosimof-diruscio-dev" target="_blank" rel="noopener noreferrer"
           className={`flex items-center justify-center gap-2 px-5 py-3 rounded-xl
             text-sm font-medium border transition-all hover:scale-105
             ${dk
